@@ -5,5 +5,11 @@ export TURTLEBOT3_MODEL=burger
 
 ros2 launch amcl.launch.py \
   use_sim_time:=True \
-  map:=/home/usuario/Documentos/GitHub/IR2121/Worlds/TI_n1_edited.yaml
+  map:=../TI_n1_edited.yaml
 
+# ros2 launch amcl.launch.py \
+#   use_sim_time:=True \
+#   map:=../TD_n1.yaml
+
+# Simulador:
+## (Gazebo + modelo)/bringup + amcl + rviz2 + estimate 2D pose + move robot

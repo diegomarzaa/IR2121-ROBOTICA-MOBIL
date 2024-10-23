@@ -11,7 +11,7 @@ def generate_launch_description():
 
 	ld = LaunchDescription()
 
-	map_file_path = '../TD_n1.yaml'
+	map_file_path = '../TI_n1_edited.yaml'
 
 	map_server_cmd = Node(
 		package='nav2_map_server',
