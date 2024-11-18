@@ -5,12 +5,12 @@
 
 using namespace std::chrono_literals;
 
-std::map<std::string, double> posicio_actual = {{"x", 0.0}, {"y", 0.0}};
+std::map<std::string, double> posicio_actual = {{"x", -2}, {"y", -0.5}};    // 1
 std::vector<std::map<std::string, double>> objectius = {
-    {{"x", 1.0}, {"y", 1.0}},
-    {{"x", 2.0}, {"y", 2.0}},
-    {{"x", 3.0}, {"y", 3.0}},
-    {{"x", 4.0}, {"y", 4.0}}
+    {{"x", 6.34}, {"y", -1.25}},    // 2
+    {{"x", 1.0}, {"y", 3.88}},      // 3
+    {{"x", -6.48}, {"y", -0.58}},   // 4
+    {{"x", -2.7}, {"y", 3.75}}      // 5
 };
 
 size_t objectiu_i = 0;
@@ -49,7 +49,7 @@ int main(int argc, char **argv)
         goal_msg.pose.orientation.z = 0.0;
         goal_msg.pose.orientation.w = 1.0;
         publisher->publish(goal_msg);
-        RCLCPP_INFO(node->get_logger(), "Publicant objectiu %ld: (%f, %f)", objectiu_i+1, objectiu["x"], objectiu["y"]);
+        RCLCPP_INFO(node->get_logger(), "Publicant objectiu %ld: (%f, %f)", objectiu_i+2, objectiu["x"], objectiu["y"]);
 
         // Objectiu alcançat?
         double distancia_a_objectiu = sqrt(pow(posicio_actual["x"] - objectiu["x"], 2) + 
@@ -59,7 +59,7 @@ int main(int argc, char **argv)
             RCLCPP_INFO(node->get_logger(), "\033[32mObjectiu %ld alcançat\033[0m", objectiu_i+1);
             continue;
         } else {
-            RCLCPP_INFO(node->get_logger(), "Distància a l'objectiu %ld: %f", objectiu_i+1, distancia_a_objectiu);
+            RCLCPP_INFO(node->get_logger(), "Distància a l'objectiu %ld: %f", objectiu_i+2, distancia_a_objectiu);
         }
 
         // Sleep for the defined loop rate
