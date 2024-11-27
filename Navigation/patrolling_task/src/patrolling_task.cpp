@@ -1,6 +1,6 @@
 #include "rclcpp/rclcpp.hpp"          // Main ROS2
 #include "geometry_msgs/msg/pose_stamped.hpp"
-#include "nav_msgs/msg/odometry.hpp"
+#include "geometry_msgs/msg/pose_with_covariance_stamped.hpp"
 #include <vector>
 
 using namespace std::chrono_literals;
@@ -15,7 +15,7 @@ std::vector<std::map<std::string, double>> objectius = {
 
 size_t objectiu_i = 0;
 
-void actualitzar_odom(const nav_msgs::msg::Odometry::SharedPtr msg)
+void actualitzar_amcl_pose(const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg)
 {
     posicio_actual["x"] = msg->pose.pose.position.x;
     posicio_actual["y"] = msg->pose.pose.position.y;
@@ -29,7 +29,8 @@ int main(int argc, char **argv)
     rclcpp::init(argc, argv);
     auto node = rclcpp::Node::make_shared("patrolling_task");
     auto publisher = node->create_publisher<geometry_msgs::msg::PoseStamped>("goal_pose", 10);
-    auto subscriber = node->create_subscription<nav_msgs::msg::Odometry>("odom", 10, actualitzar_odom);
+    auto subscriber = node->create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>(
+        "amcl_pose", 10, actualitzar_amcl_pose);
 
     // rclcpp::WallRate pose_send(1ms);
     rclcpp::WallRate loop_rate(1s);
