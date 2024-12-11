@@ -5,12 +5,22 @@
 
 using namespace std::chrono_literals;
 
+/* 
 std::map<std::string, double> posicio_actual = {{"x", -2}, {"y", -0.5}};    // 1
 std::vector<std::map<std::string, double>> objectius = {
     {{"x", 6.34}, {"y", -1.25}},    // 2
     {{"x", 1.0}, {"y", 3.88}},      // 3
     {{"x", -6.48}, {"y", -0.58}},   // 4
     {{"x", -2.7}, {"y", 3.75}}      // 5
+};
+*/
+
+std::map<std::string, double> posicio_actual = {{"x", -8.2}, {"y", 14}};    // 1
+std::vector<std::map<std::string, double>> objectius = {
+    {{"x", -8.2}, {"y", 13}},    // 2
+    {{"x", -8}, {"y", 7}},      // 3
+    {{"x", -10}, {"y", 4}},   // 4
+    {{"x", -6}, {"y", 4}}      // 5
 };
 
 size_t objectiu_i = 0;
