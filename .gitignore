@@ -4,7 +4,6 @@ log/
 build/
 __pycache__/
 *.db3
-*.png
 
 *rosbag*/
 *rosbag*
