@@ -5,5 +5,3 @@ build/
 __pycache__/
 *.db3
 
-*rosbag*/
-*rosbag*
